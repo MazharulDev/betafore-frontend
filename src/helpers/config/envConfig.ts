@@ -5,3 +5,7 @@ export const getBaseUrl = (): string => {
 export const getImgbbAPI = (): string => {
   return process.env.NEXT_PUBLIC_API_IMGBB_TOKEN as string;
 };
+
+export const stripePubKey = (): string => {
+  return process.env.NEXT_PUBLIC_API_STRIPE_PUB_KEY as string;
+};

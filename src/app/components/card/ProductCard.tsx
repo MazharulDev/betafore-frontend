@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 const ProductCard = ({ product }: any) => {
-  const { name, image, price, quantity } = product;
+  const { id, name, image, price, quantity } = product;
   return (
     <div className="shadow hover:shadow-xl rounded-md bg-white mb-4 md:mb-0 box-border overflow-hidden w-96">
       <div className="box-border h-56 overflow-hidden cursor-pointer">
@@ -18,9 +20,12 @@ const ProductCard = ({ product }: any) => {
         <p className="text-2xl font-bold ">${price}</p>
       </div>
       <div className="flex justify-center mb-2">
-        <button className=" px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white rounded mt-5 duration-200 hover:scale-105">
+        <Link
+          href={`/checkout/${id}`}
+          className=" px-3 py-1 bg-transparent border-2 border-blue-400 hover:bg-blue-400 hover:text-white rounded mt-5 duration-200 hover:scale-105"
+        >
           Buy
-        </button>
+        </Link>
       </div>
     </div>
   );
