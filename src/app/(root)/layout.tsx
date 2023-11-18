@@ -3,6 +3,7 @@ import { getUserInfo, isLoggedIn } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../components/loadingSpinner/Loading";
+import Header from "../components/root/Header";
 
 export default function RootLayout({
   children,
@@ -25,7 +26,8 @@ export default function RootLayout({
   }
   return (
     <section className="main-container">
-      <div className="w-full max-w-4xl">{children}</div>
+      <Header />
+      <div>{children}</div>
     </section>
   );
 }

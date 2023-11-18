@@ -28,3 +28,11 @@ export type IUsers = {
   phoneNumber: string;
   password: string;
 };
+
+export type IProduct = {
+  _id: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};

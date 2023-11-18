@@ -1,11 +1,11 @@
-"use client";
+import ProductSection from "../components/root/ProductSection";
 
-const HomePage = () => {
+const Home = () => {
   return (
     <div>
-      <h2>This is home page</h2>
+      <ProductSection />
     </div>
   );
 };
 
-export default HomePage;
+export default Home;
