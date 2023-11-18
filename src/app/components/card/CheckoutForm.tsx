@@ -1,11 +1,14 @@
 "use client";
 
+import { usePostPaymentMutation } from "@/redux/api/paymentApi";
 import { useUserByEmailQuery } from "@/redux/api/userApi";
 import { getUserInfo } from "@/services/auth.service";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const CheckoutForm = ({ product }: any) => {
+  const router = useRouter();
   const { userId } = getUserInfo() as any;
   const { data: user } = useUserByEmailQuery(userId);
   const [cardError, setCardError] = useState<string | undefined>("");
@@ -13,6 +16,7 @@ const CheckoutForm = ({ product }: any) => {
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
+  const [postPayment] = usePostPaymentMutation();
   useEffect(() => {
     if (product?.price) {
       fetch(
@@ -63,7 +67,17 @@ const CheckoutForm = ({ product }: any) => {
       setSuccess("");
     } else {
       setCardError("");
-      console.log(paymentIntent);
+      const paymentDataInsert = {
+        name: user?.name,
+        productName: product?.name,
+        email: userId,
+        transId: paymentIntent?.id,
+        price: product?.price,
+      };
+      const res = await postPayment(paymentDataInsert).unwrap();
+      if (res?._id) {
+        router.push(`/success/${res?.transId}`);
+      }
     }
   };
   return (
