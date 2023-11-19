@@ -36,7 +36,7 @@ const SuccessPage = ({ params }: IDProps) => {
         </div>
         <div className="flex justify-between mt-4 font-bold text-xl">
           <p>Product Name</p>
-          <p>{data?.porductName}</p>
+          <p>{data?.productName}</p>
         </div>
         <div className="flex justify-between mt-4 my-3 font-bold text-2xl">
           <p>Total Paid</p>
