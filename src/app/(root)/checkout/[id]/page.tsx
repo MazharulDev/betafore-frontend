@@ -17,7 +17,7 @@ const CheckOut = ({ params }: IDProps) => {
   const { data } = useProductByIdQuery(id);
 
   return (
-    <div className="container mx-auto my-5">
+    <div className="container mx-auto my-5 h-[80vh]">
       <div className="md:grid grid-cols-2 items-center w-fit container mx-auto gap-5">
         <div className="shadow hover:shadow-xl rounded-md bg-white mb-4 md:mb-0 box-border overflow-hidden w-96">
           <div className="box-border h-56 overflow-hidden cursor-pointer">

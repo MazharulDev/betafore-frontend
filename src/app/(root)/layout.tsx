@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../components/loadingSpinner/Loading";
 import Header from "../components/root/Header";
+import Footer from "../components/root/Footer";
 
 export default function RootLayout({
   children,
@@ -28,6 +29,7 @@ export default function RootLayout({
     <section className="main-container">
       <Header />
       <div>{children}</div>
+      <Footer />
     </section>
   );
 }
