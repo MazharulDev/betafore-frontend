@@ -1,6 +1,7 @@
 "use client";
 
 import CheckoutForm from "@/app/components/card/CheckoutForm";
+import LoadingSpinner from "@/app/components/loadingSpinner/Loading";
 import { stripePubKey } from "@/helpers/config/envConfig";
 import { useProductByIdQuery } from "@/redux/api/productApi";
 import { Elements } from "@stripe/react-stripe-js";
@@ -14,7 +15,10 @@ type IDProps = {
 
 const CheckOut = ({ params }: IDProps) => {
   const id = params?.id;
-  const { data } = useProductByIdQuery(id);
+  const { data, isLoading } = useProductByIdQuery(id);
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="container mx-auto my-5 h-[80vh]">

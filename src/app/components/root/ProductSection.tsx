@@ -3,9 +3,13 @@
 import { useShowAllProductsQuery } from "@/redux/api/productApi";
 import ProductCard from "../card/ProductCard";
 import { IProduct } from "@/types";
+import LoadingSpinner from "../loadingSpinner/Loading";
 
 const ProductSection = () => {
-  const { data } = useShowAllProductsQuery(undefined);
+  const { data, isLoading } = useShowAllProductsQuery(undefined);
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div>
       <div>
